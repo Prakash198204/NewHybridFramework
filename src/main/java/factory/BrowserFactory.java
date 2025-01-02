@@ -15,25 +15,25 @@ public class BrowserFactory {
 	
 	static WebDriver driver;
 	
-	public static WebDriver getInstance() {
+	public static WebDriver getdriverInstance() {
 			return driver;
 	}
 
 	public static WebDriver getDriver(String browser, String applicationURL) {
 		
 		if (browser.equalsIgnoreCase("Chrome")) {
-			ChromeOptions opt = new ChromeOptions();
-			if(ConfigReader.getValue("headless").equalsIgnoreCase("true")) {
-			opt.addArguments("headless=new");
-			}
-			driver = new ChromeDriver(opt);
-		} else if (browser.equalsIgnoreCase("Edge")) {
+			driver = new ChromeDriver();
+		} 
+		else if (browser.equalsIgnoreCase("Edge")) {
 			driver = new EdgeDriver();
-		} else if (browser.equalsIgnoreCase("Firefox")) {
+		} 
+		else if (browser.equalsIgnoreCase("Firefox")) {
 			driver = new FirefoxDriver();
-		} else if (browser.equalsIgnoreCase("Safari")) {
+		} 
+		else if (browser.equalsIgnoreCase("Safari")) {
 			driver = new SafariDriver();
-		} else {
+		} 
+		else {
 			System.out.println("Sorry currently we don't support " + browser + "Browser");
 		}
 		

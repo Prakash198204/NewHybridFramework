@@ -13,7 +13,7 @@ public class ExcelReder {
 	public static Object[][] getDataFromExcel(String sheetName) {
 		Object[][] arr = null;
 		try {
-			wb = new XSSFWorkbook(new FileInputStream(new File("./testdata/Data.xlsx")));
+			wb = new XSSFWorkbook(new FileInputStream(new File(System.getProperty("user.dir")+"/testdata/Data.xlsx")));
 			int rows = wb.getSheet(sheetName).getPhysicalNumberOfRows();
 			int columns = wb.getSheet(sheetName).getRow(0).getPhysicalNumberOfCells();
 			arr = new Object[rows - 1][columns];
@@ -38,6 +38,7 @@ public class ExcelReder {
 		CellType type = wb.getSheet(sheetName).getRow(row).getCell(column).getCellType();
 		if (type == CellType.STRING) {
 			data = wb.getSheet(sheetName).getRow(row).getCell(column).getStringCellValue();
+		//	System.out.println("Value is " +data);
 		} else if (type == CellType.NUMERIC) {
 			double value = wb.getSheet(sheetName).getRow(row).getCell(column).getNumericCellValue();
 			data = String.valueOf(value);
